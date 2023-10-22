@@ -1,4 +1,4 @@
-#lab-padroes-projeto-java
+# lab-padroes-projeto-java
 
 Repositório para armazenar os desafios do curso de Java Avançado da DIO.
 
