@@ -56,12 +56,12 @@ classDiagram
         +main(args: String[])
     }
 
-    Facede -- CrmService
-    Facede -- CepApi
+    Facede --|> CrmService
+    Facede --|> CepApi
     Facede : +migrarCliente(nome: String, cep: String)
-    SingletonEager -- SingletonEager : -instancia
+    SingletonEager --|> SingletonEager : -instancia
     SingletonEager : +getInstancia(): SingletonEager
-    SingletonLazy -- SingletonLazy : -instancia
+    SingletonLazy --|> SingletonLazy : -instancia
     SingletonLazy : +getInstancia(): SingletonLazy
     SingletonLazyHolder +-- SingletonLazyHolder$InstanceHolder : InstanceHolder
     SingletonLazyHolder : -instancia
@@ -72,14 +72,15 @@ classDiagram
     ComportamentoAgressivo : +mover()
     ComportamentoDefensivo : +mover()
     ComportamentoNormal : +mover()
-    Robo - Comportamento : -comportamento
+    Robo -|> Comportamento : -comportamento
     Robo : +setComportamento(comportamento: Comportamento)
     Robo : +mover()
-    CrmService -- CrmService : -CrmService()
+    CrmService --|> CrmService : -CrmService()
     CrmService : +gravarCliente(nome: String, cep: String, cidade: String, estado: String)
-    CepApi -- CepApi : -CepApi()
+    CepApi --|> CepApi : -CepApi()
     CepApi : +getInstancia(): CepApi
     CepApi : +recuperarCidade(cep: String): String
     CepApi : +recuperarEstado(cep: String): String
-    Test - Facede : +main(args: String[])
+    Test --|> Facede : +main(args: String[])
+
 ```
