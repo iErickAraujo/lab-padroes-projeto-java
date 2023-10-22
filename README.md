@@ -7,80 +7,64 @@ Repositório para armazenar os desafios do curso de Java Avançado da DIO.
 [Observações] - Projeto para fins de aprendizado.
 
 ```mermaid
-classDiagram
-    class Facede {
-        +migrarCliente(nome: String, cep: String)
-    }
-    class SingletonEager {
-        -instancia: SingletonEager
-        +getInstancia(): SingletonEager
-    }
-    class SingletonLazy {
-        -instancia: SingletonLazy
-        +getInstancia(): SingletonLazy
-    }
-    class SingletonLazyHolder {
-        +InstanceHolder
-        -instancia: SingletonLazyHolder
-        +getInstancia(): SingletonLazyHolder
-    }
-    class Comportamento {
-        +mover()
-    }
-    class ComportamentoAgressivo {
-        +mover()
-    }
-    class ComportamentoDefensivo {
-        +mover()
-    }
-    class ComportamentoNormal {
-        +mover()
-    }
-    class Robo {
-        -comportamento: Comportamento
-        +setComportamento(comportamento: Comportamento)
-        +mover()
-    }
-    class CrmService {
-        -CrmService()
-        +gravarCliente(nome: String, cep: String, cidade: String, estado: String)
-    }
-    class CepApi {
-        -instancia: CepApi
-        -CepApi()
-        +getInstancia(): CepApi
-        +recuperarCidade(cep: String): String
-        +recuperarEstado(cep: String): String
-    }
-    class Test {
-        +main(args: String[])
-    }
+% Class diagram
 
-    Facede --|> CrmService
-    Facede --|> CepApi
-    Facede : +migrarCliente(nome: String, cep: String)
-    SingletonEager --|> SingletonEager : -instancia
-    SingletonEager : +getInstancia(): SingletonEager
-    SingletonLazy --|> SingletonLazy : -instancia
-    SingletonLazy : +getInstancia(): SingletonLazy
-    SingletonLazyHolder +-- SingletonLazyHolder$InstanceHolder : InstanceHolder
-    SingletonLazyHolder : -instancia
-    SingletonLazyHolder : +getInstancia(): SingletonLazyHolder
-    Comportamento <|-- ComportamentoAgressivo
-    Comportamento <|-- ComportamentoDefensivo
-    Comportamento <|-- ComportamentoNormal
-    ComportamentoAgressivo : +mover()
-    ComportamentoDefensivo : +mover()
-    ComportamentoNormal : +mover()
-    Robo -|> Comportamento : -comportamento
-    Robo : +setComportamento(comportamento: Comportamento)
-    Robo : +mover()
-    CrmService --|> CrmService : -CrmService()
-    CrmService : +gravarCliente(nome: String, cep: String, cidade: String, estado: String)
-    CepApi --|> CepApi : -CepApi()
-    CepApi : +getInstancia(): CepApi
-    CepApi : +recuperarCidade(cep: String): String
-    CepApi : +recuperarEstado(cep: String): String
-    Test --|> Facede : +main(args: String[])
+class Facede {
+  # Migra um cliente para um novo endereço
+  +migrarCliente(nome: String, cep: String)
+}
 
+class CrmService {
+  # Grava um cliente no sistema CRM
+  +gravarCliente(nome: String, cep: String, cidade: String, estado: String)
+}
+
+class CepApi {
+  # Recupera a cidade e o estado a partir de um CEP
+  +recuperarCidade(cep: String): String
+  +recuperarEstado(cep: String): String
+}
+
+class Comportamento {
+  # Move o robô
+  +mover()
+}
+
+class ComportamentoAgressivo {
+  # Move o robô de forma agressiva
+  +mover()
+}
+
+class ComportamentoDefensivo {
+  # Move o robô de forma defensiva
+  +mover()
+}
+
+class ComportamentoNormal {
+  # Move o robô de forma normal
+  +mover()
+}
+
+class Robo {
+  # Define o comportamento do robô
+  +setComportamento(comportamento: Comportamento)
+  # Move o robô
+  +mover()
+}
+
+class Test {
+  # Testa o sistema
+  +main(args: String[])
+}
+
+Facede --|> CrmService
+Facede --|> CepApi
+
+Comportamento <|-- ComportamentoAgressivo
+Comportamento <|-- ComportamentoDefensivo
+Comportamento <|-- ComportamentoNormal
+
+Robo -|> Comportamento
+
+Test --|> Facede
 ```
