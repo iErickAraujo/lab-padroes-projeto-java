@@ -6,7 +6,7 @@ Repositório para armazenar os desafios do curso de Java Avançado da DIO.
 
 [Observações] - Projeto para fins de aprendizado.
 
-```mermaid
+
 % Class diagram
 
 class Facede {
@@ -67,4 +67,4 @@ Comportamento <|-- ComportamentoNormal
 Robo -|> Comportamento
 
 Test --|> Facede
-```
+
