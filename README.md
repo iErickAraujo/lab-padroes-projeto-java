@@ -8,7 +8,7 @@ Repositório para armazenar os desafios do curso de Java Avançado da DIO.
 
 
 % Class diagram
-
+```mermaid
 class Facede {
   # Migra um cliente para um novo endereço
   +migrarCliente(nome: String, cep: String)
@@ -67,4 +67,4 @@ Comportamento <|-- ComportamentoNormal
 Robo -|> Comportamento
 
 Test --|> Facede
-
+```
