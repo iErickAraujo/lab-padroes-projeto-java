@@ -8,62 +8,31 @@ Repositório para armazenar os desafios do curso de Java Avançado da DIO.
 
 
 ```mermaid
-class Facede {
- # Migra um cliente para um novo endereço
- +migrarCliente(nome: String, cep: String)
-}
-
-class CrmService {
- # Grava um cliente no sistema CRM
- +gravarCliente(nome: String, cep: String, cidade: String, estado: String)
-}
-
-class CepApi {
- # Recupera a cidade e o estado a partir de um CEP
- +recuperarCidade(cep: String): String
- +recuperarEstado(cep: String): String
-}
-
-class Comportamento {
- # Move o robô
- +mover()
-}
-
-class ComportamentoAgressivo {
- # Move o robô de forma agressiva
- +mover()
-}
-
-class ComportamentoDefensivo {
- # Move o robô de forma defensiva
- +mover()
-}
-
-class ComportamentoNormal {
- # Move o robô de forma normal
- +mover()
-}
-
-class Robo {
- # Define o comportamento do robô
- +setComportamento(comportamento: Comportamento)
- # Move o robô
- +mover()
-}
-
-class Test {
- # Testa o sistema
- +main(args: String[])
-}
-
-Facede --|> CrmService
-Facede --|> CepApi
-
-Comportamento <|-- ComportamentoAgressivo
-Comportamento <|-- ComportamentoDefensivo
-Comportamento <|-- ComportamentoNormal
-
-Robo -|> Comportamento
-
-Test --|> Facede
+classDiagram
+    Facede --|> CrmService
+    Facede --|> CepApi
+    Facede : +migrarCliente(nome, cep)
+    SingletonEager -- SingletonEager : -instancia
+    SingletonEager : +getInstancia()
+    SingletonLazy -- SingletonLazy : -instancia
+    SingletonLazy : +getInstancia()
+    SingletonLazyHolder -- SingletonLazyHolder_InstanceHolder : InstanceHolder
+    SingletonLazyHolder : -instancia
+    SingletonLazyHolder : +getInstancia()
+    Comportamento <|-- ComportamentoAgressivo
+    Comportamento <|-- ComportamentoDefensivo
+    Comportamento <|-- ComportamentoNormal
+    ComportamentoAgressivo : +mover()
+    ComportamentoDefensivo : +mover()
+    ComportamentoNormal : +mover()
+    Robo -- Comportamento : -comportamento
+    Robo : +setComportamento(comportamento)
+    Robo : +mover()
+    CrmService -- CrmService : -CrmService()
+    CrmService : +gravarCliente(nome, cep, cidade, estado)
+    CepApi -- CepApi : -CepApi()
+    CepApi : +getInstancia()
+    CepApi : +recuperarCidade(cep)
+    CepApi : +recuperarEstado(cep)
+    Test --|> Facede : +main(args)
 ```
