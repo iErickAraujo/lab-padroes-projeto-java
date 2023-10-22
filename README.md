@@ -81,4 +81,5 @@ classDiagram
     CepApi : +getInstancia(): CepApi
     CepApi : +recuperarCidade(cep: String): String
     CepApi : +recuperarEstado(cep: String): String
-    Test - Facede : +main(args: String[])```
+    Test - Facede : +main(args: String[])
+```
